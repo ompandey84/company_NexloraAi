@@ -12,9 +12,9 @@ import {
 const navLinks = [
   { label: "Services", href: "#services" },
   { label: "About", href: "#about" },
-  { label: "Projects", href: "#projects" },
   { label: "Process", href: "#process" },
   { label: "Testimonials", href: "#testimonials" },
+  { label: "FAQs", href: "#faqs" },
   { label: "Contact", href: "#contact" },
 ];
 

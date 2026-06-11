@@ -108,10 +108,6 @@ export default function Hero() {
               <span>Book Consultation</span>
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </a>
-            <a href="#projects" className="btn-secondary !py-4 !px-8 !text-base !rounded-full group" id="hero-cta-portfolio">
-              <span>View Portfolio</span>
-              <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </a>
           </motion.div>
 
           {/* Stats */}

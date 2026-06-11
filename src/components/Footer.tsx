@@ -15,20 +15,19 @@ const footerLinks = {
   Company: [
     { label: "About", href: "#about" },
     { label: "Services", href: "#services" },
-    { label: "Projects", href: "#projects" },
     { label: "Process", href: "#process" },
+    { label: "Testimonials", href: "#testimonials" },
   ],
   Resources: [
     { label: "Blog", href: "#" },
-    { label: "Case Studies", href: "#projects" },
     { label: "Documentation", href: "#" },
-    { label: "FAQ", href: "#" },
+    { label: "FAQ", href: "#faqs" },
   ],
   Connect: [
     { label: "Contact", href: "#contact" },
     { label: "LinkedIn", href: "https://linkedin.com/company/nexloraai" },
-    { label: "WhatsApp", href: "https://wa.me/91XXXXXXXXXX" },
-    { label: "Email", href: "mailto:hello@nexloraai.com" },
+    { label: "WhatsApp", href: "https://wa.me/916266621399" },
+    { label: "Email", href: "mailto:nexloraai@gmail.com" },
   ],
 };
 
