@@ -1,14 +1,14 @@
-import { Navbar } from "@/components/navbar"
-import { Hero } from "@/components/hero"
+import { Navbar } from "@/components/Navbar"
+import { Hero } from "@/components/Hero"
 import { TechMarquee } from "@/components/tech-marquee"
-import { Services } from "@/components/services"
-import { Process } from "@/components/process"
+import { Services } from "@/components/Services"
+import { Process } from "@/components/Process"
 import { Story } from "@/components/story"
 import { CaseStudies } from "@/components/case-studies"
-import { Testimonials } from "@/components/testimonials"
+import { Testimonials } from "@/components/Testimonials"
 import { FAQ } from "@/components/faq"
-import { Contact } from "@/components/contact"
-import { Footer } from "@/components/footer"
+import { Contact } from "@/components/Contact"
+import { Footer } from "@/components/Footer"
 
 export default function Page() {
   return (
