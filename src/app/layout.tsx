@@ -1,52 +1,49 @@
-import type { Metadata } from "next";
-import "./globals.css";
+import { Analytics } from '@vercel/analytics/next'
+import type { Metadata } from 'next'
+import { Geist, Geist_Mono } from 'next/font/google'
+import './globals.css'
+
+const geistSans = Geist({ variable: '--font-geist-sans', subsets: ['latin'] })
+const geistMono = Geist_Mono({
+  variable: '--font-geist-mono',
+  subsets: ['latin'],
+})
 
 export const metadata: Metadata = {
-  title: "NexloraAI — AI Solutions That Scale Businesses",
+  title: 'NexloraAI — Building AI Systems That Scale Businesses',
   description:
-    "NexloraAI is a premium AI development agency building AI Automation, Custom Software, Intelligent Chatbots, and Modern Web Applications for startups and enterprises.",
-  keywords:
-    "AI agency, AI automation, chatbot development, web development, SaaS development, API integration, business process automation, NexloraAI",
-  robots: "index, follow",
-  openGraph: {
-    title: "NexloraAI — AI Solutions That Scale Businesses",
-    description:
-      "AI Automation, Custom Software, Intelligent Chatbots, and Modern Web Applications.",
-    url: "https://nexloraai.com",
-    siteName: "NexloraAI",
-    locale: "en_US",
-    type: "website",
+    'NexloraAI engineers custom automation, intelligent chatbots, and high-performance software for ambitious businesses.',
+  generator: 'v0.app',
+  icons: {
+    icon: [
+      {
+        url: '/icon-light-32x32.png',
+        media: '(prefers-color-scheme: light)',
+      },
+      {
+        url: '/icon-dark-32x32.png',
+        media: '(prefers-color-scheme: dark)',
+      },
+      {
+        url: '/icon.svg',
+        type: 'image/svg+xml',
+      },
+    ],
+    apple: '/apple-icon.png',
   },
-  twitter: {
-    card: "summary_large_image",
-    title: "NexloraAI — AI Solutions That Scale Businesses",
-    description:
-      "AI Automation, Custom Software, Intelligent Chatbots, and Modern Web Applications.",
-  },
-};
+}
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
-          rel="stylesheet"
-        />
-      </head>
-      <body className="antialiased" style={{ fontFamily: "'Inter', system-ui, sans-serif" }}>
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} bg-background`}>
+      <body className="font-sans antialiased">
         {children}
+        {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>
-  );
+  )
 }

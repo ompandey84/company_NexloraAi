@@ -1,129 +1,74 @@
-"use client";
-
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
-import { Star, Quote, MessageSquare } from "lucide-react";
+import { Star } from "lucide-react"
+import { Reveal } from "@/components/reveal"
 
 const testimonials = [
   {
-    name: "Rajesh Sharma",
-    role: "CEO, TechVenture Labs",
-    content:
-      "NexloraAI completely transformed our business operations. Their AI automation solution reduced our manual processing time by 70%, allowing our team to focus on strategic growth. The quality of work and attention to detail was exceptional.",
-    rating: 5,
-    avatar: "RS",
-    gradient: "from-purple-500 to-indigo-500",
+    quote:
+      "Working with NexloraAI was one of the best decisions we made. They delivered our MVP in just 6 days and the quality was exceptional — our investors were blown away.",
+    initials: "RM",
+    name: "Rahul Mehta",
+    role: "Founder & CEO, TaskFlow AI",
+    location: "Mumbai, India",
   },
   {
-    name: "Sarah Mitchell",
-    role: "Founder, DataFlow Analytics",
-    content:
-      "Working with NexloraAI was an incredible experience. They built our entire SaaS platform from scratch — the architecture is clean, scalable, and the AI chatbot integration has increased our user engagement by 45%.",
-    rating: 5,
-    avatar: "SM",
-    gradient: "from-blue-500 to-cyan-500",
+    quote:
+      "The AI integration they built for our platform increased user engagement by 40%. They genuinely understand both design and technology — rare to find in one team.",
+    initials: "SC",
+    name: "Sarah Chen",
+    role: "CTO, Nexus Labs",
+    location: "Singapore",
   },
   {
-    name: "Aditya Patel",
-    role: "CTO, InnovateMind",
-    content:
-      "The team at NexloraAI delivered our project ahead of schedule with outstanding quality. Their expertise in AI and web development is top-notch. They didn't just build what we asked — they improved upon our vision.",
-    rating: 5,
-    avatar: "AP",
-    gradient: "from-emerald-500 to-teal-500",
+    quote:
+      "Professional, fast, and incredibly talented. Our website went from idea to live in under 2 weeks. The attention to detail on mobile was something other agencies missed completely.",
+    initials: "AP",
+    name: "Arjun Patel",
+    role: "CEO, Vantage Digital",
+    location: "Dubai, UAE",
   },
-];
+]
 
-export default function Testimonials() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
+export function Testimonials() {
   return (
-    <section
-      id="testimonials"
-      className="section-padding relative overflow-hidden"
-    >
-      {/* Background */}
-      <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-purple-500/5 rounded-full blur-[150px]" />
-      <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-blue-500/5 rounded-full blur-[120px]" />
+    <section className="relative mx-auto max-w-6xl px-4 py-24 sm:px-6">
+      <Reveal className="mx-auto max-w-2xl text-center">
+        <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent">
+          // Testimonials
+        </p>
+        <h2 className="mt-4 text-balance text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
+          What Clients Say
+        </h2>
+        <p className="mt-4 text-pretty text-sm leading-relaxed text-muted-foreground sm:text-base">
+          Real feedback from founders and CTOs we&apos;ve built for.
+        </p>
+      </Reveal>
 
-      <div className="container-main relative z-10" ref={ref}>
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-20"
-        >
-          <div className="flex justify-center mb-6">
-            <div className="section-badge">
-              <MessageSquare className="w-3.5 h-3.5" />
-              <span>Testimonials</span>
-            </div>
-          </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
-            What Our Clients{" "}
-            <span className="gradient-text">Say</span>
-          </h2>
-          <p className="text-lg text-zinc-400 max-w-2xl mx-auto leading-relaxed">
-            Don&apos;t just take our word for it — hear from the businesses we&apos;ve
-            helped transform.
-          </p>
-        </motion.div>
-
-        {/* Testimonial Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {testimonials.map((testimonial, i) => (
-            <motion.div
-              key={testimonial.name}
-              initial={{ opacity: 0, y: 40 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{
-                delay: 0.2 + i * 0.15,
-                duration: 0.7,
-                ease: [0.16, 1, 0.3, 1],
-              }}
-              className="group relative p-8 rounded-2xl glass card-hover"
-              id={`testimonial-${i}`}
-            >
-              {/* Quote Icon */}
-              <div className="absolute top-6 right-6 opacity-10 group-hover:opacity-20 transition-opacity">
-                <Quote className="w-10 h-10 text-purple-400" />
-              </div>
-
-              {/* Stars */}
-              <div className="flex gap-1 mb-6">
-                {Array.from({ length: testimonial.rating }).map((_, j) => (
-                  <Star
-                    key={j}
-                    className="w-4 h-4 fill-amber-400 text-amber-400"
-                  />
+      <div className="mt-14 grid grid-cols-1 gap-4 md:grid-cols-3">
+        {testimonials.map((t, i) => (
+          <Reveal key={t.name} delay={i * 0.08}>
+            <figure className="flex h-full flex-col rounded-2xl border border-border bg-card/50 p-6 backdrop-blur transition-colors hover:border-primary/40 sm:p-8">
+              <div className="flex gap-0.5 text-accent">
+                {Array.from({ length: 5 }).map((_, s) => (
+                  <Star key={s} className="h-4 w-4 fill-current" />
                 ))}
               </div>
-
-              {/* Content */}
-              <p className="text-zinc-300 leading-relaxed mb-8 text-[15px]">
-                &ldquo;{testimonial.content}&rdquo;
-              </p>
-
-              {/* Author */}
-              <div className="flex items-center gap-4">
-                <div
-                  className={`w-12 h-12 rounded-full bg-gradient-to-br ${testimonial.gradient} flex items-center justify-center text-white font-semibold text-sm`}
-                >
-                  {testimonial.avatar}
-                </div>
+              <blockquote className="mt-4 flex-1 text-sm leading-relaxed text-foreground/90">
+                {t.quote}
+              </blockquote>
+              <figcaption className="mt-6 flex items-center gap-3 border-t border-border pt-5">
+                <span className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/15 font-mono text-xs font-semibold text-primary">
+                  {t.initials}
+                </span>
                 <div>
-                  <div className="font-semibold text-white">
-                    {testimonial.name}
-                  </div>
-                  <div className="text-sm text-zinc-500">{testimonial.role}</div>
+                  <p className="text-sm font-medium text-foreground">{t.name}</p>
+                  <p className="text-xs text-muted-foreground">{t.role}</p>
+                  <p className="font-mono text-xs text-accent">{t.location}</p>
                 </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+              </figcaption>
+            </figure>
+          </Reveal>
+        ))}
       </div>
     </section>
-  );
+  )
 }

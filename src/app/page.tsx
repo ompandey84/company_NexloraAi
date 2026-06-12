@@ -1,31 +1,29 @@
-"use client";
+import { Navbar } from "@/components/navbar"
+import { Hero } from "@/components/hero"
+import { TechMarquee } from "@/components/tech-marquee"
+import { Services } from "@/components/services"
+import { Process } from "@/components/process"
+import { Story } from "@/components/story"
+import { CaseStudies } from "@/components/case-studies"
+import { Testimonials } from "@/components/testimonials"
+import { FAQ } from "@/components/faq"
+import { Contact } from "@/components/contact"
+import { Footer } from "@/components/footer"
 
-import Navbar from "@/components/Navbar";
-import Hero from "@/components/Hero";
-import Services from "@/components/Services";
-import About from "@/components/About";
-import Process from "@/components/Process";
-import Technologies from "@/components/Technologies";
-import Testimonials from "@/components/Testimonials";
-import Faqs from "@/components/Faqs";
-import Contact from "@/components/Contact";
-import Footer from "@/components/Footer";
-
-export default function Home() {
+export default function Page() {
   return (
-    <>
+    <main className="relative min-h-screen bg-background">
       <Navbar />
-      <main>
-        <Hero />
-        <Services />
-        <About />
-        <Process />
-        <Technologies />
-        <Testimonials />
-        <Faqs />
-        <Contact />
-      </main>
+      <Hero />
+      <TechMarquee />
+      <Services />
+      <Process />
+      <Story />
+      <CaseStudies />
+      <Testimonials />
+      <FAQ />
+      <Contact />
       <Footer />
-    </>
-  );
+    </main>
+  )
 }
