@@ -6,10 +6,42 @@ import { Reveal } from "@/components/reveal"
 
 export function Contact() {
   const [submitted, setSubmitted] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [error, setError] = useState('')
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    setSubmitted(true)
+    setIsSubmitting(true)
+    setError('')
+
+    const formData = new FormData(e.currentTarget)
+    const data = {
+      name: formData.get('name'),
+      email: formData.get('email'),
+      projectType: formData.get('projectType'),
+      budget: formData.get('budget'),
+      details: formData.get('details'),
+    }
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      })
+
+      const result = await response.json()
+
+      if (response.ok) {
+        setSubmitted(true)
+      } else {
+        setError(result.error || 'Something went wrong. Please try again.')
+      }
+    } catch (err) {
+      setError('Failed to send message. Please try again later.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -37,17 +69,23 @@ export function Contact() {
                   <Check className="h-6 w-6" />
                 </div>
                 <h3 className="mt-4 text-lg font-medium text-foreground">
-                  Message received.
+                  Message sent successfully!
                 </h3>
                 <p className="mt-2 text-sm text-muted-foreground">
-                  Our team will get back to you within 24 hours.
+                  Our team will get back to you at your email address within 24 hours.
                 </p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+                {error && (
+                  <div className="rounded-md bg-destructive/10 p-3 text-sm text-destructive">
+                    {error}
+                  </div>
+                )}
                 <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
                   <Field label="Full Name">
                     <input
+                      name="name"
                       required
                       type="text"
                       placeholder="Jane Doe"
@@ -56,6 +94,7 @@ export function Contact() {
                   </Field>
                   <Field label="Email Address">
                     <input
+                      name="email"
                       required
                       type="email"
                       placeholder="jane@company.com"
@@ -65,7 +104,7 @@ export function Contact() {
                 </div>
                 <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
                   <Field label="Project Type">
-                    <select required defaultValue="" className={inputClass}>
+                    <select name="projectType" required defaultValue="" className={inputClass}>
                       <option value="" disabled>
                         Select a type
                       </option>
@@ -76,7 +115,7 @@ export function Contact() {
                     </select>
                   </Field>
                   <Field label="Budget Range">
-                    <select required defaultValue="" className={inputClass}>
+                    <select name="budget" required defaultValue="" className={inputClass}>
                       <option value="" disabled>
                         Select a range
                       </option>
@@ -89,6 +128,7 @@ export function Contact() {
                 </div>
                 <Field label="Project Details">
                   <textarea
+                    name="details"
                     required
                     rows={5}
                     placeholder="Tell us about what you want to build..."
@@ -97,10 +137,11 @@ export function Contact() {
                 </Field>
                 <button
                   type="submit"
-                  className="group inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-all hover:shadow-[0_0_30px_-4px_var(--primary)]"
+                  disabled={isSubmitting}
+                  className="group inline-flex items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-all hover:shadow-[0_0_30px_-4px_var(--primary)] disabled:opacity-70"
                 >
-                  Send Message
-                  <Send className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                  {isSubmitting ? "Sending..." : "Send Message"}
+                  {!isSubmitting && <Send className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />}
                 </button>
               </form>
             )}
