@@ -75,7 +75,7 @@ export default function Blog() {
   const rest = blogPosts.slice(1);
 
   return (
-    <section id="blog" className="py-32 bg-background relative overflow-hidden">
+    <section id="blog" className="py-20 bg-background relative overflow-hidden">
       {/* Background glow */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#5b21b6]/10 rounded-full blur-[180px] pointer-events-none" />
 

@@ -91,7 +91,7 @@ export default function AboutUs() {
     <section
       id="about-us"
       ref={sectionRef}
-      className="py-32 bg-background relative overflow-hidden"
+      className="py-20 bg-background relative overflow-hidden"
     >
       {/* Background effects */}
       <motion.div

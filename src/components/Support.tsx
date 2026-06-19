@@ -170,7 +170,7 @@ export default function Support() {
   return (
     <section
       id="support"
-      className="py-32 bg-background relative overflow-hidden"
+      className="py-20 bg-background relative overflow-hidden"
     >
       {/* Background glow */}
       <div className="absolute bottom-0 left-1/4 w-[600px] h-[600px] bg-[#5b21b6]/10 rounded-full blur-[180px] pointer-events-none" />

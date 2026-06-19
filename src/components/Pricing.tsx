@@ -238,7 +238,7 @@ function PricingCard({
 
 export default function Pricing() {
   return (
-    <section id="pricing" className="py-32 bg-background relative overflow-hidden">
+    <section id="pricing" className="py-20 bg-background relative overflow-hidden">
       {/* Keyframes */}
       <style
         dangerouslySetInnerHTML={{
