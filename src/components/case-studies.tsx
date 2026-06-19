@@ -3,6 +3,14 @@ import { Reveal } from "@/components/reveal"
 
 const projects = [
   {
+    category: "AR Commerce Platform",
+    title: "VogueRent",
+    desc: "Premium Multi-Vendor Fashion Rental Platform with AR Experience. Features real-time messaging, vendor management, and interactive AR previews.",
+    metric: "AR Tech & Real-time",
+    tags: ["React.js", "Node.js", "Supabase", "WebSockets"],
+    link: "https://voguerent.in"
+  },
+  {
     category: "SaaS Platform",
     title: "GetYourQR",
     desc: "A comprehensive QR Menu Ordering System for restaurants. Enables contactless ordering, payments, and menu management.",
