@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { Menu, X } from "lucide-react"
+import Image from "next/image"
 
 const links = [
   { label: "Services", href: "#services" },
@@ -32,9 +33,9 @@ export function Navbar() {
     >
       <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
         <a href="#" className="flex items-center gap-2">
-          <span className="flex h-7 w-7 items-center justify-center rounded-md bg-primary text-primary-foreground">
-            <span className="font-mono text-sm font-bold">N</span>
-          </span>
+          <div className="relative h-8 w-8">
+            <Image src="/logo.png" alt="NexloraAI Logo" fill className="object-contain" />
+          </div>
           <span className="font-mono text-sm font-semibold tracking-[0.2em] text-foreground">
             NEXLORAAI
           </span>
