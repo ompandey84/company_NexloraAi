@@ -90,7 +90,46 @@ function PricingCard({
   index: number;
 }) {
   const [isHovered, setIsHovered] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const Icon = plan.icon;
+
+  const handleCheckout = async (e: React.MouseEvent) => {
+    if (plan.price === "Custom") {
+      return; // Let the normal contact link behavior work
+    }
+    
+    e.preventDefault();
+    setIsLoading(true);
+    
+    try {
+      const { load } = await import('@cashfreepayments/cashfree-js');
+      const cashfree = await load({ mode: "production" });
+      
+      const amount = parseInt(plan.price.replace(/,/g, ''));
+      
+      const response = await fetch('/nexloraai/api/payment', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ planName: plan.name, amount })
+      });
+      
+      const data = await response.json();
+      
+      if (data.paymentSessionId) {
+        cashfree.checkout({
+          paymentSessionId: data.paymentSessionId,
+          returnUrl: window.location.origin + "/about?payment_status=success"
+        });
+      } else {
+        alert("Failed to initialize payment session.");
+      }
+    } catch (error) {
+      console.error(error);
+      alert("Something went wrong initializing checkout.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <motion.div
@@ -216,7 +255,7 @@ function PricingCard({
           </ul>
 
           {/* CTA */}
-          <Link href="/#contact" className="block">
+          <Link href="/#contact" onClick={handleCheckout} className="block">
             <motion.div
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
@@ -226,8 +265,17 @@ function PricingCard({
                   : "bg-white/5 border border-white/10 text-white/80 hover:bg-white/10 hover:border-white/20 hover:text-white"
               }`}
             >
-              {plan.cta}
-              <ArrowRight size={16} />
+              {isLoading ? (
+                <div className="flex items-center gap-2">
+                  <div className="h-4 w-4 animate-spin rounded-full border-2 border-white/20 border-t-white"></div>
+                  Processing...
+                </div>
+              ) : (
+                <>
+                  {plan.cta}
+                  <ArrowRight size={16} />
+                </>
+              )}
             </motion.div>
           </Link>
         </div>
@@ -238,7 +286,7 @@ function PricingCard({
 
 export default function Pricing() {
   return (
-    <section id="pricing" className="py-20 bg-background relative overflow-hidden">
+    <section id="pricing" className="py-16 sm:py-20 bg-background relative overflow-hidden">
       {/* Keyframes */}
       <style
         dangerouslySetInnerHTML={{
@@ -271,7 +319,7 @@ export default function Pricing() {
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
         {/* Header */}
-        <div className="text-center mb-20">
+        <div className="text-center mb-12 sm:mb-20">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -287,7 +335,7 @@ export default function Pricing() {
             whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-4xl md:text-6xl font-bold tracking-tight text-white mb-6 leading-[1.1]"
+            className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight text-white mb-4 sm:mb-6 leading-[1.1]"
           >
             Plans that{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#a78bfa] to-[#3b82f6]">
@@ -301,7 +349,7 @@ export default function Pricing() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-white/50 text-lg max-w-2xl mx-auto leading-relaxed"
+            className="text-white/50 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed px-2"
           >
             No hidden fees, no surprises. Choose the plan that fits your business
             stage and upgrade anytime as you grow.
@@ -314,7 +362,7 @@ export default function Pricing() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-start max-w-6xl mx-auto"
+          className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:gap-8 items-start max-w-6xl mx-auto"
         >
           {plans.map((plan, index) => (
             <PricingCard key={plan.name} plan={plan} index={index} />
@@ -327,7 +375,7 @@ export default function Pricing() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.4 }}
-          className="flex flex-wrap items-center justify-center gap-8 md:gap-12 mt-16 pt-12 border-t border-white/[0.04]"
+          className="flex flex-wrap items-center justify-center gap-4 sm:gap-8 md:gap-12 mt-10 sm:mt-16 pt-8 sm:pt-12 border-t border-white/[0.04]"
         >
           {[
             "No upfront payment required",

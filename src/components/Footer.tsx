@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import logoImage from "../../public/nexlora-logo.png";
 import { Sparkles, Camera, Mail, Phone } from "lucide-react";
 import { motion, Variants } from "framer-motion";
 
@@ -20,15 +21,15 @@ const itemVariants: Variants = {
 
 export default function Footer() {
   return (
-    <footer className="bg-background border-t border-border pt-20 pb-10 overflow-hidden">
+    <footer className="bg-background border-t border-border pt-12 sm:pt-20 pb-8 sm:pb-10 overflow-hidden">
       <motion.div 
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-50px" }}
-        className="max-w-7xl mx-auto px-6 md:px-12"
+        className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12"
       >
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 sm:gap-12 mb-10 sm:mb-16">
           <motion.div variants={itemVariants} className="col-span-1 md:col-span-1">
             <Link href="/" className="flex items-center gap-3 mb-6 group">
               <motion.div
@@ -36,7 +37,7 @@ export default function Footer() {
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
                 className="relative w-12 h-12 drop-shadow-[0_0_15px_rgba(91,33,182,0.6)] group-hover:drop-shadow-[0_0_25px_rgba(139,92,246,0.8)] transition-all duration-300"
               >
-                <Image src="/logo.png" alt="NexloraAI Logo" fill className="object-contain" />
+                <Image src={logoImage} alt="NexloraAI Logo" fill className="object-contain" />
               </motion.div>
               <span className="text-2xl font-semibold tracking-tight text-white group-hover:text-[#a78bfa] transition-colors duration-300">NexloraAI</span>
             </Link>

@@ -30,7 +30,7 @@ const services = [
 
 export function Services() {
   return (
-    <section id="services" className="relative mx-auto max-w-6xl px-4 py-24 sm:px-6">
+    <section id="services" className="relative mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
       <Reveal className="mx-auto max-w-2xl text-center">
         <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent">
           // What we do

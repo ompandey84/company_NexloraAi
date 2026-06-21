@@ -30,7 +30,7 @@ const testimonials = [
 
 export function Testimonials() {
   return (
-    <section className="relative mx-auto max-w-6xl px-4 py-24 sm:px-6">
+    <section className="relative mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
       <Reveal className="mx-auto max-w-2xl text-center">
         <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent">
           // Testimonials
@@ -43,7 +43,7 @@ export function Testimonials() {
         </p>
       </Reveal>
 
-      <div className="mt-14 grid grid-cols-1 gap-4 md:grid-cols-3">
+      <div className="mt-10 grid grid-cols-1 gap-4 sm:mt-14 sm:grid-cols-2 md:grid-cols-3">
         {testimonials.map((t, i) => (
           <Reveal key={t.name} delay={i * 0.08}>
             <figure className="flex h-full flex-col rounded-2xl border border-border bg-card/50 p-6 backdrop-blur transition-colors hover:border-primary/40 sm:p-8">

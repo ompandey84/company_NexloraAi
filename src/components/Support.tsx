@@ -170,14 +170,14 @@ export default function Support() {
   return (
     <section
       id="support"
-      className="py-20 bg-background relative overflow-hidden"
+      className="py-16 sm:py-20 bg-background relative overflow-hidden"
     >
       {/* Background glow */}
       <div className="absolute bottom-0 left-1/4 w-[600px] h-[600px] bg-[#5b21b6]/10 rounded-full blur-[180px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-20 md:mb-24">
+        <div className="text-center mb-12 sm:mb-20 md:mb-24">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -191,7 +191,7 @@ export default function Support() {
             whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-4xl md:text-6xl font-bold tracking-tight text-white mb-6 leading-[1.1]"
+            className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight text-white mb-4 sm:mb-6 leading-[1.1]"
           >
             We&apos;re here to{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#a78bfa] to-[#5b21b6]">help</span>
@@ -201,14 +201,14 @@ export default function Support() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-white/60 text-lg max-w-2xl mx-auto"
+            className="text-white/60 text-base sm:text-lg max-w-2xl mx-auto px-2"
           >
             Get answers to common questions or reach out directly — our team
             typically responds within the hour.
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-16">
           {/* FAQ Accordion */}
           <motion.div
             variants={containerVariants}

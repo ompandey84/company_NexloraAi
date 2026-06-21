@@ -75,13 +75,13 @@ export default function Blog() {
   const rest = blogPosts.slice(1);
 
   return (
-    <section id="blog" className="py-20 bg-background relative overflow-hidden">
+    <section id="blog" className="py-16 sm:py-20 bg-background relative overflow-hidden">
       {/* Background glow */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#5b21b6]/10 rounded-full blur-[180px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 relative z-10">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 sm:mb-20 gap-6 sm:gap-8">
           <div>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -96,7 +96,7 @@ export default function Blog() {
               whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-4xl md:text-6xl font-bold tracking-tight text-white leading-[1.1]"
+              className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-tight text-white leading-[1.1]"
             >
               Latest from
               <br />
@@ -127,7 +127,7 @@ export default function Blog() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 lg:grid-cols-2 gap-8"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8"
         >
           {/* Featured Post (Large) */}
           <motion.article

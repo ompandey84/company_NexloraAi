@@ -54,7 +54,7 @@ const milestones = [
 
 export function Story() {
   return (
-    <section id="story" className="relative mx-auto max-w-5xl px-4 py-24 sm:px-6">
+    <section id="story" className="relative mx-auto max-w-5xl px-4 py-16 sm:px-6 sm:py-24">
       <Reveal className="mx-auto max-w-2xl text-center">
         <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent">
           // Our story

@@ -1,5 +1,5 @@
 import { Analytics } from '@vercel/analytics/next'
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
 import './globals.css'
 import { Navbar } from '@/components/Navbar'
@@ -12,27 +12,38 @@ const geistMono = Geist_Mono({
   subsets: ['latin'],
 })
 
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
+}
+
 export const metadata: Metadata = {
   title: 'NexloraAI — Building AI Systems That Scale Businesses',
   description:
     'NexloraAI engineers custom automation, intelligent chatbots, and high-performance software for ambitious businesses.',
-  generator: 'v0.app',
+  keywords:
+    'web development agency India,AI app development India,mobile app development India,custom software development Indore,Next.js development agency,React development India,AI integration services,MVP development India,web development UAE,software agency Indore,SaaS development India,LLM integration',
+  robots: 'index, follow',
+  openGraph: {
+    title: 'NexloraAI — AI App Development Agency India',
+    description:
+      'Top web, mobile & AI development agency in Indore, India — serving UAE & global clients. Custom software, MVPs in 7 days.',
+    url: 'https://auronetics.com/nexloraai',
+    siteName: 'NexloraAI',
+    locale: 'en_IN',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'NexloraAI — AI App Development Agency India',
+    description:
+      'Top web, mobile & AI development agency in India — serving UAE & global clients. MVPs in 7 days.',
+  },
   icons: {
-    icon: [
-      {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
-    ],
-    apple: '/apple-icon.png',
+    icon: '/favicon.ico',
+    apple: '/favicon.ico',
   },
 }
 
@@ -42,8 +53,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} bg-background`}>
-      <body className="font-sans antialiased flex flex-col min-h-screen">
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body className="nexlora-theme min-h-screen bg-background text-foreground font-sans antialiased flex flex-col">
         <SmoothScrollProvider>
           <Navbar />
           <main className="flex-1">
@@ -56,3 +67,4 @@ export default function RootLayout({
     </html>
   )
 }
+

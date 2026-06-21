@@ -35,7 +35,7 @@ export function FAQ() {
   const [open, setOpen] = useState<number | null>(0)
 
   return (
-    <section id="faq" className="relative mx-auto max-w-3xl px-4 py-24 sm:px-6">
+    <section id="faq" className="relative mx-auto max-w-3xl px-4 py-16 sm:px-6 sm:py-24">
       <Reveal className="text-center">
         <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent">
           // FAQ

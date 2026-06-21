@@ -48,7 +48,7 @@ export function CaseStudies() {
   return (
     <section
       id="work"
-      className="relative border-y border-border bg-card/20 py-24"
+      className="relative border-y border-border bg-card/20 py-16 sm:py-24"
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <Reveal className="mx-auto max-w-2xl text-center">
@@ -64,7 +64,7 @@ export function CaseStudies() {
           </p>
         </Reveal>
 
-        <div className="mt-14 grid grid-cols-1 gap-4 md:grid-cols-2">
+        <div className="mt-10 grid grid-cols-1 gap-4 sm:mt-14 sm:grid-cols-2">
           {projects.map((p, i) => (
             <Reveal key={p.title} delay={i * 0.08}>
               <a href={p.link} target="_blank" rel="noopener noreferrer" className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card/50 p-6 backdrop-blur transition-colors hover:border-primary/40 sm:p-8 block">
