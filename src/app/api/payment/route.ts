@@ -1,9 +1,11 @@
 import { NextResponse } from "next/server";
-import { Cashfree } from "cashfree-pg";
+import { Cashfree, CFEnvironment } from "cashfree-pg";
 
-Cashfree.XClientId = process.env.CASHFREE_APP_ID || "";
-Cashfree.XClientSecret = process.env.CASHFREE_SECRET_KEY || "";
-Cashfree.XEnvironment = Cashfree.Environment.PRODUCTION;
+const cashfree = new Cashfree(
+  CFEnvironment.PRODUCTION,
+  process.env.CASHFREE_APP_ID || "",
+  process.env.CASHFREE_SECRET_KEY || ""
+);
 
 export async function POST(req: Request) {
   try {
@@ -28,7 +30,7 @@ export async function POST(req: Request) {
       order_note: `Payment for ${planName}`
     };
 
-    const response = await Cashfree.PGCreateOrder("2023-08-01", request);
+    const response = await cashfree.PGCreateOrder(request);
     
     return NextResponse.json({ 
       paymentSessionId: response.data.payment_session_id,
