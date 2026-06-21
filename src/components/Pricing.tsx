@@ -107,7 +107,8 @@ function PricingCard({
       
       const amount = parseInt(plan.price.replace(/,/g, ''));
       
-      const response = await fetch('/nexloraai/api/payment', {
+      const basePath = window.location.pathname.includes('/nexloraai') ? '/nexloraai' : '';
+      const response = await fetch(`${basePath}/api/payment`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ planName: plan.name, amount })

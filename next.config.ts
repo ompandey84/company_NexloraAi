@@ -1,8 +1,10 @@
-import type { NextConfig } from "next";
+/** @type {import('next').NextConfig} */
 
-const nextConfig: NextConfig = {
-  basePath: "/nexloraai",
-  output: "standalone",
+const isVercel = process.env.VERCEL === "1";
+
+const nextConfig = {
+  output: isVercel ? undefined : "standalone",
+  basePath: isVercel ? "" : "/nexloraai",
   images: {
     unoptimized: true,
   },
